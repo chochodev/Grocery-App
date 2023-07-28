@@ -1,0 +1,225 @@
+#authentication {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(1.5rem + 1vw);
+    min-height: 100vh;
+    background: white;
+}
+
+/* FOR THE SHOW BEFORE SIGNING FORM */
+#authentication .show-div {
+    width: 100%;
+    gap: 1rem;
+    background: #0000000f;  
+}
+
+#authentication .show-div > * {
+    transform: translateY(-5rem);
+}
+
+#authentication .show-div .show-div-logo {
+    gap: 1rem;
+}
+
+#authentication .show-div .show-div-logo .title {
+    font-size: 4rem;
+    color: #121212;
+}
+
+#authentication .show-div .info {
+    width: 80%;
+    color: #555555;
+}
+
+/* FOR THE FORM SECTION */
+#signup.form,
+#signin.form {
+    width: 90%;
+    min-width: 23rem;
+    max-width: 35rem;
+    gap: 1em;
+    padding: 1em 2em;
+    margin: 1rem auto;
+    background: white;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    outline: 1px solid rgba(185, 16, 97, .5);
+}
+
+#signin.form .signin-form {
+    gap: 1em;
+}
+
+.form .title {
+    color: var(--text-clr);
+    text-transform: uppercase;
+}
+
+/* INPUT SECTION */
+.form .input-container {
+    display: flex;
+    gap: .5em;
+    align-items: start;
+    height: max-content;
+    width: 100%;
+}
+
+.form .input-container .label {
+    position: relative;
+    left: 0;
+}
+
+.form .input-div {
+    position: relative;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    height: max-content;
+    width: 100%;
+}
+
+.form .input-container .input-div .icon {
+    position: absolute;
+    left: .5em;
+    color: var(--main-color);
+}
+
+.form .input-container .input-div .input {
+    width: 100%;
+    height: 2.5em;
+    padding: 0 2.5em;
+    border-radius: .5em;
+}
+
+/* FOR GENDER TITLE */
+.form .input-container .gender-title {
+    gap: .5rem;
+}
+
+.form .input-container .input-div .input:focus {
+    outline-width: 3px;
+}
+
+.form .input-container .input-div .input::placeholder {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.form .input-container .input-div .input[type="checkbox"] {
+    width: .8em;
+    height: .8em;
+    outline: none;
+}
+
+/* FOR TERMS AND CONDITION */
+.form .terms-input-div {
+    gap: .25rem;
+}
+
+.form .input-container .input-div .check-info {
+    color: var(--main-color);
+}
+
+.form .input-container .input-div .check-info .link,
+.form .input-container .input-div .check-info .link {
+    color: var(--link-clr);
+    margin-left: -8px;
+}
+
+/* Forget password container */
+.forget-password-container {
+    gap: .5rem;
+}
+
+.forget-password-container .forget-input-container {
+    gap: .5rem;
+}
+
+.forget-password-container .forget-input-container .input {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 .25rem 0 .5rem;
+    background: #0000000f;
+}
+
+.forget-password-container .forget-input-container .input:focus {
+    border: none;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+    transition: .1s ease-in-out;
+}
+
+.forget-password-container .submit-forgetpassword {
+    height: 2.5rem;
+    width: max-content;
+    background: var(--cta-ghost);
+    color: var(--link-clr);
+    padding: 0 1.5rem;
+}
+
+.forget-password-container .submit-forgetpassword:hover {
+    color: white;
+    background: var(--cta-ghost-hover);
+}
+
+.form .submit,
+.form .submit {
+    background: #b91160;
+    color: #fff;
+    width: 100%;
+    padding: .5em;
+    border-radius: .15em;
+}
+
+.form .submit:hover,
+.form .submit:hover {
+    background: var(--cta-hover);
+}
+
+.form .submit:active,
+.form .submit:active {
+    background: none;
+}
+
+.form .info {
+    gap: .25em;
+}
+
+.form .info p {
+    color: #e15a16;
+}
+
+
+@media (max-width: 830px) {
+    #authentication {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #authentication .show-div {
+        padding: 5rem 0;
+    }
+    #authentication .show-div > * {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    #authentication .show-div .show-div-logo .title {
+        font-size: 3rem;
+    }
+    #authentication .menu-list .screen-md {
+        display: none;
+    }
+    #authentication .menu-list .screen-sm {
+        display: flex;
+    }
+    #authentication .menu-list-2 {
+        display: flex;
+    }
+
+    /* FOR THE FORM SECTION ON SMALL SCREEN */
+    #signup.form,
+    #signin.form {
+        min-width: 0;
+        padding: 1rem 1rem;
+    }
+}

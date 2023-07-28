@@ -1,0 +1,59 @@
+{% extends 'admin/main.html' %}
+{% block stylesheet %}{{ url_for('static', filename='css/admin/products.css') }}{% endblock %}
+{% block content %}
+
+    <section id="products" class="w-full flex-as dir-col">
+        <section class="main w-full flex-c-s dir-col">
+            <!-- MAIN HEADER -->
+            <div class="title-section w-full flex dir-col">
+                <h2 class="title header-md">Products</h2>
+            </div>
+            <div class="product-contents w-full flex-ac dir-col">
+                <!-- PRODUCTS CATEGORY -->
+                <div class="product-links w-full flex-ac">
+                    <button id="all-products-button" class="link w-max flex-c-c dir-col w-600 active">All Products</button>
+                    <a href="{{ url_for('admin_panel.create_product') }}" id="approved-products-button" class="button button-sm w-max flex-c-c dir-col w-600 br-md">New Product</a>
+                </div>
+
+                <!-- PRODUCTS HEADER -->
+                <table class="products-table w-full flex dir-col">
+                    <thead class="products-header">
+                        <tr class="products-header-items w-full">
+                            <th class="text-sm w-600">Name</th>
+                            <th class="text-sm w-600">Description</th>
+                            <th class="text-sm w-600">Price/kg</th>
+                            <th class="text-sm w-600">Max Price</th>
+                            <th class="text-sm w-600">Amount Sold</th>
+                        </tr>
+                    </thead>
+
+                    <!-- PRODUCTS -->
+                    <tbody id="all-products" class="products w-full flex-ac dir-col">
+                        {% if products %}
+                        {% for product in products %}
+                        <tr class="product w-full" onclick="redirectToEditProduct('{{ product.id }}')">
+                            <td class="text-sm">{{ product.name }}</td>
+                            <td class="text-sm">{{ product.allergic_desc}}</td>
+                            <td class="text-sm">${{ product.normal_price}}</td>
+                            <td class="text-sm">${{ product.min_price }}</td>
+                            <td class="text-sm">-- kg</td>
+                        </tr>
+                        {% endfor%}
+                        {% endif %}
+                        <tr class="product w-full">
+                            <td class="text-sm">--</td>
+                            <td class="text-sm">--</td>
+                            <td class="text-sm">$ --</td>
+                            <td class="text-sm">$ --</td>
+                            <td class="text-sm">-- kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+                    
+        </section>
+    </section>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/admin/products.js') }}"></script>
+{% endblock %}

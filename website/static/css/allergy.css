@@ -1,0 +1,25 @@
+#allergy {
+    padding: calc(2vw + .5rem);
+    gap: 1rem;
+}
+
+#allergy > .title {
+    color: var(--text-clr);
+}
+
+/* PRODUCT */
+#allergy .allergies {
+    gap: .75rem;
+}
+#allergy .product {
+    max-width: 66rem;
+    padding: .5rem;
+    height: max-content;
+    border-radius: .5rem;
+    box-shadow: 0 0 3px 1px rgba(185, 16, 97, .25);
+}
+
+#allergy .product .info,
+#allergy .product .title {
+    color: var(--text-clr);
+}

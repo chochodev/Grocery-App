@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {# For the page logo favicon.ico #}
+    <link rel="icon" href="{{ url_for('static', filename='svg/favicon.svg') }}" type="image/svg+xml" sizes="32x32" />
+    <link rel="icon" href="{{ url_for('static', filename='images/logo_watermelon.png') }}" type="image/png" sizes="32x32" />
+    
+    {# For the universal styles #}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/loader.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/navbar.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/includes/footer.css') }}" />
+
+    <!-- FONTAWESOME ONLINE LINK -->
+    <script src="https://kit.fontawesome.com/78fe799ed6.js" crossorigin="anonymous"></script>
+
+    <title>ErenFresh {% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    {# INCLUDE LOADER #}
+    {% include 'assets/loader.html' %}
+    
+    {# INCLUDE NAVBAR #}
+    {% include 'includes/navbar.html' %}
+    
+    {# FLASHED MESSAGES #}
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+    {% if messages %} 
+    {% for category, message in messages %} 
+    {% if category == 'error' %}
+    {# ERROR CATEGORY MESSAGES #}
+    <div class="alert error w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% else %}
+    {# SUCCESS CATEGORY MESSAGES #}
+    <div class="alert success w-full flex-tc">
+      <p class='message text-sm w-600'>{{ message }}</p>
+      <button type="button" id="flashed-messages-close-btn" class="close button" data-dismiss="alert">
+        <i aria-hidden="true" class="fa fa-close icon"></i>
+      </button>
+    </div>
+    {% endif %} 
+    {% endfor %} 
+    {% endif %} 
+    {% endwith %}
+
+    {# DISPLAYING PAGE CONTENTS #}
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+    
+    {# INCLUDES FOOTER #}
+    {% include 'includes/footer.html' %}
+
+    {# INCLUDES PAGE JAVASCRIPT #}
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/assets/loader.js') }}"></script>
+    {# PAGE JS CONTENT #}
+    {% block js %}
+    {% endblock %}
+  </body>
+</html>
