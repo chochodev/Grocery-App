@@ -41,7 +41,7 @@
                     <label for="kg-total{{ product.id }}" class="good text-sm w-600">Quantity:</label>
                     <div class="input-div h-max flex-c-c flex-tc">
                         <span class="input-placeholder w-600">Kg</span>
-                        <input type="number" id="kg-total{{ product.id }}" min="1" value="1" class="input br-md w-full w-600" />
+                        <input type="number" id="kg-total{{ product.id }}" value="1" class="input br-md w-full w-600" />
                     </div>
                 </div>
                 {# TOTAL IN $ #}
@@ -49,7 +49,7 @@
                     <label for="pay-total{{ product.id }}" class="good text-sm w-600">Total:</label>
                     <div class="input-div w-full h-max flex-c-c flex-tc">
                         <span class="input-placeholder w-600">$</span>
-                        <input type="number" name="offer-price" id="pay-total{{ product.id }}" class="input br-md w-full w-600" />
+                        <input type="number" value="{{ product.normal_price }}" name="offer-price" id="pay-total{{ product.id }}" class="input br-md w-full w-600" />
                     </div>
                 </div>
                 <div class="cta-div h-max w-full flex-c-sb flex-tc">
@@ -116,6 +116,7 @@ kgTotalInput{{ product.id }}.addEventListener("input", () => {
         normalTotalElement{{ product.id }}.innerText = "$" + total.toFixed(2);
     }
 });
+
 {% endfor %}
 {% endif %}
 

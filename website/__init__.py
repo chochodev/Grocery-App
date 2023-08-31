@@ -10,7 +10,6 @@ from flask_mail import Mail
 import cloudinary
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from dotenv import load_dotenv
 
 
 db = SQLAlchemy()
@@ -18,21 +17,18 @@ DB_NAME = 'database.db'
 migrate = Migrate()
 mail = Mail()
 
-# To load the dotenv library
-load_dotenv()
-
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    app.config['SECRET_KEY'] = 's;ldfjawhep9fsdfhiwehf;s'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
     migrate.init_app(app, db)
 
     # Cloudinary configuration
     cloudinary.config(
-        cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
-        api_key=os.environ.get('CLOUDINARY_API_KEY'),
-        api_secret=os.environ.get('CLOUDINARY_API_SECRET')
+        cloud_name='dyghyyxga',
+        api_key='214846422545113',
+        api_secret='h9UIuOhRj7aoBqFb2Uqw3c-S-LU'
     )
 
     CORS(app)
@@ -69,7 +65,7 @@ def create_app():
         if len(User.query.all()) < 1:
                 # Create admin user on database initialization
                 # Encrypts the password and saves it in a variable
-                hashed_password = bcrypt.hashpw(os.environ.get('ADMIN_PASSWORD').encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+                hashed_password = bcrypt.hashpw('ilovethis'.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
                 admin_user = User(role='admin', name='Admin', email='admin@gmail.com', address='Opposite North gate', gender='male', password=hashed_password)
                 db.session.add(admin_user)
                 db.session.commit()

@@ -2,7 +2,8 @@ from flask import Flask, Blueprint, render_template, request, jsonify, flash, re
 from .models import User
 import bcrypt
 from . import db, mail
-from flask_login import login_required, login_user, logout_user, current_user, LoginManager
+from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import LoginManager
 from datetime import timedelta
 from flask_mail import Message
 from itsdangerous import URLSafeSerializer as Serializer
@@ -144,6 +145,7 @@ def signin():
             # Validates the encrypted password
             if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
                 flash(f'Logged in successfully as {user.name[0:30]}', category='success')
+                session['show_flash'] = True
 
                 # Checks if user choose to stay logged in
                 if remember:
