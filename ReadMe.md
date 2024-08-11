@@ -3,7 +3,7 @@
 Edenfresh is a Flask-based e-commerce application for managing and selling grocery.
 It has the functionalities of basic e-commerce website such as browsing products in the menu, searching for products, negotiating prices, adding products to cart, ordering for products...
 
-['Live Preview'](https://erenfresh-deploy-002.onrender.com/)
+[Live Preview](https://erenfresh-deploy-002.onrender.com/)
 
 ## Installation
 
